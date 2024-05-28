@@ -1,11 +1,15 @@
 // esta clase está completa, no necesita nada más
 import universidades.*
 
-class ProfesionalAsociado {
-	var universidad
-	
-	method universidad() { return universidad }
-	method universidad(univ) { universidad = univ }
+class Persona {
+	var property edad
+}
+
+class Profecional inherits Persona{
+	var property universidad
+}
+
+class ProfesionalAsociado inherits Profecional{
 	
 	method provinciasDondePuedeTrabajar() { return #{"Entre Rios", "Corrientes", "Santa Fe"} }
 	
@@ -14,11 +18,7 @@ class ProfesionalAsociado {
 
 
 // a esta clase le faltan métodos
-class ProfesionalVinculado {
-	var universidad
-	
-	method universidad() { return universidad }
-	method universidad(univ) { universidad = univ }
+class ProfesionalVinculado inherits Profecional{
 	
 	method provinciasDondePuedeTrabajar() { return #{universidad.provincia()} }
 	method honorariosPorHora() { return universidad.honorariosRecomendados() }
@@ -26,13 +26,10 @@ class ProfesionalVinculado {
 
 
 // a esta clase le faltan atributos y métodos
-class ProfesionalLibre {
-	var universidad
+class ProfesionalLibre inherits Profecional{
+	
 	const property provinciasDondePuedeTrabajar= #{}
 	var property honorariosRecomendados
-	
-	method universidad() { return universidad }
-	method universidad(univ) { universidad = univ }
 	
 	method asignarProvincias(listaDeProvincias) {
 		provinciasDondePuedeTrabajar.addAll(listaDeProvincias)
